@@ -1,51 +1,46 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Button from "./Button";
 import Heading from "./Heading";
 import Section from "./Section";
 import { grid } from "../assets";
 import { Gradient } from "./design/Roadmap";
-import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-  const formRef = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [contactMessage, setContactMessage] = useState('');
 
-  const sendEmail = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Make sure your template has these variables defined
-    const templateParams = {
-      user_name: formRef.current.name.value,
-      user_email: formRef.current.email.value,
-      user__message: formRef.current.message.value
-    };
+    const form = e.target;
+    const formData = new FormData(form);
 
-    console.log(templateParams);
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
 
-    emailjs.send(
-      "service_jbqc9yo",
-      "template_cf81pgc",
-      templateParams,  // Changed from formRef.current to templateParams
-      {
-        publicKey:"dHZ7QpTwL2xvsRVeL"}
-    )
-    .then(() => {
-      setContactMessage('Message sent successfully');
-      formRef.current.reset();
-      
-      setTimeout(() => {
-        setContactMessage('');
-      }, 5000);
-    })
-    .catch((error) => {
-      console.error('EmailJS error:', error);
+      if (response.ok) {
+        setContactMessage('Message sent successfully');
+        form.reset();
+        
+        setTimeout(() => {
+          setContactMessage('');
+        }, 5000);
+      } else {
+        setContactMessage('Message not sent (service error)');
+      }
+    } catch (error) {
+      console.error('FormSubmit error:', error);
       setContactMessage('Message not sent (service error)');
-    })
-    .finally(() => {
+    } finally {
       setIsSubmitting(false);
-    });
+    }
   };
 
   return (
@@ -65,7 +60,16 @@ const Contact = () => {
               />
             </div>
             <div className="relative z-1">
-              <form ref={formRef} onSubmit={sendEmail}>
+              <form 
+                action="https://formsubmit.co/info.globsoft@gmail.com" 
+                method="POST"
+                onSubmit={handleSubmit}
+              >
+                {/* FormSubmit configuration - these are hidden fields */}
+                <input type="hidden" name="_subject" value="New contact form submission from your website!" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                
                 <div className="mb-8">
                   <label className="block body-2 text-n-1 mb-4" htmlFor="name">
                     Your Name
@@ -74,7 +78,7 @@ const Contact = () => {
                     className="w-full px-6 py-4 bg-n-7 rounded-xl body-2 text-n-1 border border-n-6 focus:border-n-5 transition-colors"
                     type="text"
                     id="name"
-                    name="user_name"  // Make sure this matches template
+                    name="name"
                     required
                   />
                 </div>
@@ -87,7 +91,7 @@ const Contact = () => {
                     className="w-full px-6 py-4 bg-n-7 rounded-xl body-2 text-n-1 border border-n-6 focus:border-n-5 transition-colors"
                     type="email"
                     id="email"
-                    name="user_email"  // Make sure this matches template
+                    name="email"
                     required
                   />
                 </div>
@@ -99,7 +103,7 @@ const Contact = () => {
                   <textarea
                     className="w-full px-6 py-4 bg-n-7 rounded-xl body-2 text-n-1 border border-n-6 focus:border-n-5 transition-colors min-h-[150px]"
                     id="message"
-                    name="user__message"  // Make sure this matches template
+                    name="message"
                     required
                   />
                 </div>
