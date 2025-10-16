@@ -29,7 +29,7 @@ const PricingList = () => {
 
           <Button
             className="w-full mb-6"
-            href={item.price ? "https://forms.gle/nc7Y86GfJfFBQ51n7" : "mailto:info.globsoft@gmail.com"}
+            href={item.price ? "/order" : "#contact"}
             white={!!item.price}
           >
             {item.price ? "Order Now" : "Contact us"}

@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
 
 import { brainwave } from "../assets";
@@ -9,7 +9,8 @@ import { HamburgerMenu } from "./design/Header";
 import { useState } from "react";
 
 const Header = () => {
-  const pathname = useLocation();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [openNavigation, setOpenNavigation] = useState(false);
 
   const toggleNavigation = () => {
@@ -29,6 +30,33 @@ const Header = () => {
     setOpenNavigation(false);
   };
 
+  // Handle navigation clicks - works on both home and order pages
+  const handleNavClick = (e, url) => {
+    handleClick();
+    
+    // If we're not on the home page and clicking a hash link, navigate to home first
+    if (location.pathname !== '/' && url.startsWith('#')) {
+      e.preventDefault();
+      navigate('/' + url);
+    }
+  };
+
+  // Handle logo click
+  const handleLogoClick = (e) => {
+    if (location.pathname !== '/') {
+      e.preventDefault();
+      navigate('/#hero');
+    }
+  };
+
+  // Handle contact link
+  const handleContactClick = (e) => {
+    if (location.pathname !== '/') {
+      e.preventDefault();
+      navigate('/#contact');
+    }
+  };
+
   return (
     <div
       className={`fixed top-0 left-0 w-full z-50  border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm ${
@@ -36,7 +64,11 @@ const Header = () => {
       }`}
     >
       <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
-        <a className="block w-[12rem] xl:mr-8" href="#hero">
+        <a 
+          className="block w-[12rem] xl:mr-8" 
+          href="#hero"
+          onClick={handleLogoClick}
+        >
           <img src={brainwave} width={200} height={50} alt="Brainwave" />
         </a>
 
@@ -50,11 +82,11 @@ const Header = () => {
               <a
                 key={item.id}
                 href={item.url}
-                onClick={handleClick}
+                onClick={(e) => handleNavClick(e, item.url)}
                 className={`block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 ${
                   item.onlyMobile ? "lg:hidden" : ""
                 } px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold ${
-                  item.url === pathname.hash
+                  item.url === location.hash
                     ? "z-2 lg:text-n-1"
                     : "lg:text-n-1/50"
                 } lg:leading-5 lg:hover:text-n-1 xl:px-12`}
@@ -69,11 +101,12 @@ const Header = () => {
 
         <a
           href="#contact"
+          onClick={handleContactClick}
           className="button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block"
         >
           Contact
         </a>
-        <Button className="hidden lg:flex" href="https://forms.gle/nc7Y86GfJfFBQ51n7">
+        <Button className="hidden lg:flex" href="/order">
           Order Now
         </Button>
 

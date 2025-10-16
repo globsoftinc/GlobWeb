@@ -39,7 +39,7 @@ const Hero = () => {
           We empower businesses with Smart & Affordable Tech Solutions <br />
           —without breaking your bank account!
           </p>
-          <Button href="#pricing" white>
+          <Button href="/order" white>
             Get started
           </Button>
         </div>
