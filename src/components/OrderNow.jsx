@@ -128,7 +128,7 @@ const OrderNow = () => {
                     onSubmit={handleSubmit}
                   >
                     {/* FormSubmit configuration - hidden fields */}
-                    <input type="hidden" name="_subject" value="New Order Submission from GlobWeb!" />
+                    <input type="hidden" name="_subject" value="New Order Submission from GlobWeb! (L4tO9mCG) " />
                     <input type="hidden" name="_captcha" value="false" />
                     <input type="hidden" name="_template" value="table" />
                     <input type="hidden" name="_cc" value="info.globsoft@gmail.com" />

@@ -66,7 +66,7 @@ const Contact = () => {
                 onSubmit={handleSubmit}
               >
                 {/* FormSubmit configuration - these are hidden fields */}
-                <input type="hidden" name="_subject" value="New contact form submission from your website!" />
+                <input type="hidden" name="_subject" value="New contact form submission from your GlobWeb! (gHIa5GIq) " />
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="table" />
                 
