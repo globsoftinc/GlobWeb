@@ -48,9 +48,6 @@ const Footer = () => {
             <a href="#features" className="caption text-n-4 hover:text-n-1 transition-colors">
               Services
             </a>
-            <a href="#pricing" className="caption text-n-4 hover:text-n-1 transition-colors">
-              Pricing
-            </a>
             <a href="#contact" className="caption text-n-4 hover:text-n-1 transition-colors">
             Contact
             </a>
@@ -77,14 +74,6 @@ const Footer = () => {
         <div className="flex sm:justify-between justify-center items-center gap-10 max-sm:flex-col">
         <p className="caption text-n-4 text-center lg:text-left">
   GlobWeb © {new Date().getFullYear()} All rights reserved.
-  <br className="block lg:hidden" />
-  ‎  Powered by{" "}
-  <a
-    href="https://globsoftinc.github.io/"
-    className="caption text-n-4 inline hover:underline"
-  >
-    GlobSoft Inc.
-  </a>
 </p>
 
 

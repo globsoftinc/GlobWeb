@@ -222,26 +222,6 @@ const OrderNow = () => {
                       </select>
                     </div>
 
-                    {/* File Upload for Logo/Brand Assets */}
-                    <div className="mb-8">
-                      <label className="block body-2 text-n-1 mb-4" htmlFor="logo">
-                        Brand Logo / Assets <span className="text-color-1">*</span>
-                      </label>
-                      <div className="relative">
-                        <input
-                          className="w-full px-6 py-4 bg-n-7 rounded-xl body-2 text-n-1 border border-n-6 focus:border-n-5 transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-n-6 file:text-n-1 hover:file:bg-n-5 file:cursor-pointer"
-                          type="file"
-                          id="logo"
-                          name="logo"
-                          accept="image/png, image/jpeg, image/jpg, image/svg+xml"
-                          required
-                        />
-                      </div>
-                      <p className="body-2 text-n-4 mt-2 text-sm">
-                        Optional: Upload your logo (PNG, JPG, SVG - Max 5MB)
-                      </p>
-                    </div>
-
                     {/* Project Details */}
                     <div className="mb-8">
                       <label className="block body-2 text-n-1 mb-4" htmlFor="message">

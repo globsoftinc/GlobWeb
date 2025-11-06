@@ -61,11 +61,6 @@ export const navigation = [
     url: "#features",
   },
   {
-    id: "3",
-    title: "Pricing",
-    url: "#pricing",
-  },
-  {
     id: "4",
     title: "Contact",
     url: "#contact",
@@ -320,33 +315,33 @@ export const benefits = [
 
 export const socials = [
   {
-    id: "0",
-    title: "LinkedIn",
-    iconUrl: discordBlack,
-    url: "https://www.linkedin.com/company/globsoft",
-  },
-  {
     id: "1",
-    title: "Twitter",
-    iconUrl: twitter,
-    url: "https://x.com/glob_soft",
+    title: "Facebook",
+    iconUrl: facebook,
+    url: "https://www.facebook.com/globsoftinc",
   },
   {
     id: "2",
     title: "Instagram",
     iconUrl: instagram,
-    url: "https://www.instagram.com/globsoft/",
+    url: "https://www.instagram.com/globsoftinc",
   },
   {
     id: "3",
-    title: "YouTube",
-    iconUrl: telegram,
-    url: "https://www.youtube.com/@globsoft",
+    title: "Twitter",
+    iconUrl: twitter,
+    url: "https://x.com/globsoftinc",
   },
   {
     id: "4",
-    title: "Facebook",
-    iconUrl: facebook,
-    url: "https://www.facebook.com/globsoft/",
+    title: "LinkedIn",
+    iconUrl: discordBlack,
+    url: "https://www.linkedin.com/company/globsoftinc",
+  },
+  {
+    id: "5",
+    title: "YouTube",
+    iconUrl: telegram,
+    url: "https://www.youtube.com/@globsoftinc",
   },
 ];
