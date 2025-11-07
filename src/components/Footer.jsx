@@ -51,9 +51,6 @@ const Footer = () => {
             <a href="#contact" className="caption text-n-4 hover:text-n-1 transition-colors">
             Contact
             </a>
-            <a href="https://raw.githubusercontent.com/globsofts/GlobSoft-Inc.-Card/refs/heads/main/2.jpg" className="caption text-n-4 hover:text-n-1 transition-colors">
-            DigiCard
-            </a>
           </div>
         </div>
 
