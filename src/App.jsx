@@ -11,6 +11,7 @@ import Roadmap from "./components/Roadmap";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
 import OrderNow from "./components/OrderNow";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 // Home Page Component (your existing landing page)
 const HomePage = () => {
@@ -28,16 +29,20 @@ const HomePage = () => {
         <Footer />
       </div>
       <ButtonGradient />
+      <WhatsAppButton />
     </>
   );
 };
 
 const App = () => {
   return (
+    <>
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/order" element={<OrderNow />} />
     </Routes>
+    <WhatsAppButton />
+    </>
   );
 };
 
